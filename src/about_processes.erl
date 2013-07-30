@@ -2,7 +2,7 @@
 -compile(export_all).
 
 writing_messages_to_yourself() ->
-  self() ! __,
+  self() ! "Hello Self!",
   receive
     Message ->
       Message =:= "Hello Self!"
@@ -17,7 +17,7 @@ writing_messages_to_your_friends() ->
                           Pid ! "I only ping-pong!"
                       end
                     end),
-  FriendPid ! {self(), __},
+  FriendPid ! {self(), ping},
   receive
     pong ->
       get_here;
